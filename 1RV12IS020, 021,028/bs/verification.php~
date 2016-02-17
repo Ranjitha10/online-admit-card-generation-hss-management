@@ -1,0 +1,40 @@
+<?php 
+$hostname="localhost"; 
+$username="root"; 
+$password=""; 
+$database="ereges";
+  
+$dbhandle = mysql_connect($hostname, $username, $password) 
+  or die("Unable to connect to MySQL");
+  
+$selected = mysql_select_db("ereges",$dbhandle) 
+  or die("Could not select examples");
+session_start();
+$b = $_SESSION["cid"];
+$g = "Verified";
+
+if(isset($_POST['submit'])){//to run PHP script on submit
+if(!empty($_POST['check'])){
+// Loop to store and display values of individual checked checkbox.
+foreach($_POST['check'] as $selected){
+	$query= "UPDATE `hss_mngr` SET `grade` = '$g' WHERE `cid`= '$b' AND `susn`='$selected'";
+	$result1 = mysql_query($query);
+
+	if($result1==1)
+		{ 	
+			header('Location:WPhssmngrc.php');
+		}
+		else
+		echo $query;
+}
+}
+}
+
+
+
+
+
+
+
+		?>
+?>

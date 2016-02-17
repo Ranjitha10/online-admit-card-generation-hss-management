@@ -1,0 +1,40 @@
+<?php 
+			$hostname="localhost"; 
+			$username="root"; 
+			$password="root"; 
+			$database="ereges";
+			session_start();
+			$dbhandle = mysql_connect($hostname, $username, $password) 
+  				or die("Unable to connect to MySQL");
+            
+			$selected = mysql_select_db("ereges",$dbhandle) 
+  				or die("Could not select examples");
+				echo "<tr>";
+echo '<td width="85" height="30">First Name <td width="15">:<td height="30"> <input type="text" name="fname" size="20" style = "text-transform:capitalize" value ='.$_SESSION["fname"].'>';
+echo '</tr><tr></tr><tr>';
+echo '<td height="30">Middle Name<td> :<td height="30"> <input type="text" name="mname" size="20" "text-transform:capitalize" value='.$_SESSION["mname"].'></tr><tr>';
+echo '<td height="30">Last Name<td> :<td height="30"> <input type="text" name="lname" size="20" "text-transform:capitalize" value='.$_SESSION["lname"].'></tr><tr>';
+echo '<td height="30">USN<td> : <td height="30"><input type="text" name="usn" size="20" style = "text-transform:uppercase" value='.$_SESSION["usn"].'></tr><tr>';
+echo '<td height="30">Password<td>: <td><input type="password" name="pass1"  placeholder ="Old/New Password"  required></tr><tr>';
+
+
+echo '<td height="30">Gender<td>:<td> <select name= "gender" >';
+echo '	<option >M</option>';
+echo '    <option>F</option></select></tr><tr>';
+echo '<td height="30">Email<td>:<td> <input type="text" name="email" size="20" required></tr><tr>';
+echo '<td height="30">Mobile<td>:<td> <input type="text" name="phone_no" size="20" required></tr><tr>';
+echo '<td height="30">Counsellor ID<td>:<td> <select name="cid" style = "text-transform:uppercase" placeholder=<?php echo $_SESSION["cid"] ?> required>';
+		echo '<option> CRM</option>';
+        echo '<option> ABS</option>';
+        echo '<option> DP</option>';
+        echo '<option> GRS</option>';
+        echo '<option> GSM</option>';
+        echo '<option> GV</option>';
+        echo '<option> KSN</option>';
+        echo '<option> PT</option></select></tr><tr>';
+echo '<td height="30"><input name="Submit" type="submit" name="submit"  value="Submit" align="center" /></tr><tr>';
+echo '<form action="delpro.php">';
+echo '<p align="center"><input name="delete" type="submit" align="top" value="Delete Profile"/></p>';
+echo '</form>';
+?>
+?>

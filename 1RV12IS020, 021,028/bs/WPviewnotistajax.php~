@@ -1,0 +1,24 @@
+ <?php 
+			$hostname="localhost"; 
+			$username="root"; 
+			$password=""; 
+			$database="ereges";
+  	
+			$dbhandle = mysql_connect($hostname, $username, $password) 
+  				or die("Unable to connect to MySQL");
+			session_start();
+			$selected = mysql_select_db("ereges",$dbhandle) 
+  				or die("Could not select examples");
+  			$a = $_SESSION["usn"];
+			$b = $_SESSION["cid"];
+  			$sql = "SELECT `cmsg` FROM `cmsg` WHERE susn = '$a' AND cid = '$b'";
+			
+  			$i=1;
+			
+			$ret = mysql_query($sql);
+				if(!$ret){echo "error ".$sql; }
+			   	while($row = mysql_fetch_assoc($ret)){
+				echo "<p>".$i++.":  ".$row['cmsg']."</p>";
+				}
+	?>
+?>
